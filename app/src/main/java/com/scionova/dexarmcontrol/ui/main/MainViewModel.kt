@@ -2,6 +2,7 @@ package com.scionova.dexarmcontrol.ui.main
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.Button
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import com.scionova.dexarmcontrol.R
 
 class MainViewModel(application: Application) : AndroidViewModel(application){
 

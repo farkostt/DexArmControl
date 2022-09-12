@@ -3,6 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#300C10"
     tools:context=".MainActivity">
 
     <GridLayout
@@ -23,7 +24,9 @@
             android:layout_row="0"
             android:layout_column="1"
             android:layout_margin="5dp"
-            android:background="@drawable/ic_btn_arrow_up" />
+            android:background="@drawable/selector"
+            android:rotation="0"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/btn_arrow_down"
@@ -32,7 +35,9 @@
             android:layout_row="2"
             android:layout_column="1"
             android:layout_margin="5dp"
-            android:background="@drawable/ic_btn_arrow_down" />
+            android:background="@drawable/selector"
+            android:rotation="180"
+            android:clickable="true"/>
 
         <ImageView
             android:id="@+id/btn_arrow_left"
@@ -41,7 +46,8 @@
             android:layout_row="1"
             android:layout_column="0"
             android:layout_margin="5dp"
-            android:background="@drawable/ic_btn_arrow_left" />
+            android:background="@drawable/selector"
+            android:rotation="270"/>
 
         <ImageView
             android:id="@+id/btn_arrow_right"
@@ -50,7 +56,8 @@
             android:layout_row="1"
             android:layout_column="2"
             android:layout_margin="5dp"
-            android:background="@drawable/ic_btn_arrow_right" />
+            android:background="@drawable/selector"
+            android:rotation="90"/>
 
         <ImageView
             android:id="@+id/btn_arrow_middle"
@@ -83,7 +90,7 @@
             android:layout_column="0"
             android:layout_margin="5dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/ic_btn_arrow_up" />
+            android:background="@drawable/selector" />
 
         <ImageView
             android:id="@+id/btn_arrow_down_vertical"
@@ -93,7 +100,9 @@
             android:layout_column="0"
             android:layout_margin="5dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/ic_btn_arrow_down" />
+            android:background="@drawable/selector"
+
+            android:rotation="180"/>
 
         <ImageView
             android:id="@+id/btn_arrow_middle_vertical"
