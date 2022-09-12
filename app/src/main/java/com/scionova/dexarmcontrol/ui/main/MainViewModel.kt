@@ -21,13 +21,21 @@ class MainViewModel(application: Application) : AndroidViewModel(application){
         btnArrowLeft: ImageView,
         btnArrowMiddle: ImageView
     ) {
-
         setupTouchListener(btnArrowUp, "Up - Pressed", "Up - Released")
         setupTouchListener(btnArrowRight, "Right - Pressed", "Right - Released")
         setupTouchListener(btnArrowDown, "Down - Pressed", "Down - Released")
         setupTouchListener(btnArrowLeft, "Left - Pressed", "Left - Released")
         setupTouchListener(btnArrowMiddle, "Middle - Pressed", "Middle - Released")
+    }
 
+    fun setupVerticalArrows(
+        btnArrowUpVertical: ImageView,
+        btnArrowDownVertical: ImageView,
+        btnArrowMiddleVertical: ImageView
+    ) {
+        setupTouchListener(btnArrowUpVertical, "Vertical Up - Pressed", "Vertical Up - Released")
+        setupTouchListener(btnArrowDownVertical, "Vertical Down - Pressed", "Vertical Down - Released")
+        setupTouchListener(btnArrowMiddleVertical, "Vertical Middle - Pressed", "Vertical Middle - Released")
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -44,16 +52,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application){
 
             true
         }
-    }
-
-    fun setupVerticalArrows(
-        btnArrowUpVertical: Button,
-        btnArrowDownVertical: Button,
-        btnArrowMiddleVertical: Button
-    ) {
-
-
-
     }
 
 }
