@@ -40,7 +40,9 @@ class MainFragment : Fragment() {
 
 
         viewModel.setupSquareArrows(binding.btnArrowUp, binding.btnArrowRight, binding.btnArrowDown, binding.btnArrowLeft, binding.btnArrowMiddle)
-        viewModel.setupVerticalArrows(binding.btnArrowUpVertical, binding.btnArrowDownVertical, binding.btnArrowMiddleVertical)
+        viewModel.setupVerticalArrowsRight(binding.btnArrowUpVerticalRight, binding.btnArrowDownVerticalRight, binding.btnArrowMiddleVerticalRight)
+        viewModel.setupVerticalArrowsLeft(binding.btnArrowUpVerticalLeft, binding.btnArrowDownVerticalLeft, binding.btnArrowMiddleVerticalLeft)
+
     }
 
 
