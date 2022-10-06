@@ -22,16 +22,16 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val moveRepository: MoveRepository) : ViewModel(){
 
     fun setupSquareArrows(
-        btnArrowUp: ImageView,
+        btnArrowForward: ImageView,
         btnArrowRight: ImageView,
-        btnArrowDown: ImageView,
+        btnArrowBackward: ImageView,
         btnArrowLeft: ImageView,
         btnArrowMiddle: ImageView
     ) {
-        setupNewTouchListener(btnArrowUp, "G0 X10", "Up - Released")
-        setupTouchListener(btnArrowRight, "Right - Pressed", "Right - Released")
-        setupTouchListener(btnArrowDown, "Down - Pressed", "Down - Released")
-        setupTouchListener(btnArrowLeft, "Left - Pressed", "Left - Released")
+        setupNewTouchListener(btnArrowForward, "G0 X10", "Forward - Released")
+        setupNewTouchListener(btnArrowRight, "G0 Z10", "Right - Released")
+        setupNewTouchListener(btnArrowBackward, "G0 X-10", "Backward - Released")
+        setupNewTouchListener(btnArrowLeft, "G0 Z-10", "Left - Released")
         setupTouchListener(btnArrowMiddle, "Middle - Pressed", "Middle - Released")
     }
 
@@ -40,8 +40,8 @@ class MainViewModel @Inject constructor(private val moveRepository: MoveReposito
         btnArrowDownVertical: ImageView,
         btnArrowMiddleVertical: ImageView
     ) {
-        setupTouchListener(btnArrowUpVertical, "Vertical Right Up - Pressed", "Vertical Right Up - Released")
-        setupTouchListener(btnArrowDownVertical, "Vertical Right Down - Pressed", "Vertical Right Down - Released")
+        setupNewTouchListener(btnArrowUpVertical, "G0 Y10", "Vertical Right Up - Released")
+        setupNewTouchListener(btnArrowDownVertical, "G0 Y-10", "Vertical Right Down - Released")
         setupTouchListener(btnArrowMiddleVertical, "Vertical Right Middle - Pressed", "Vertical Right Middle - Released")
     }
 
@@ -66,7 +66,7 @@ class MainViewModel @Inject constructor(private val moveRepository: MoveReposito
                             // Calling the repository is safe as it will move execution off
                             // the main thread
                             Log.d("viewModelScope", "sending http...")
-                            val response = moveRepository.sendMoveAxisX(msgPressed.toInt())
+                            val response = moveRepository.sendNewMove(msgPressed)
                             Log.d("debug", response.toString())
                         } catch (error: Exception) {
                             // show error message to user

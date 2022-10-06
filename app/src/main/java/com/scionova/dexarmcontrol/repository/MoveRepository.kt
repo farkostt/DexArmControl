@@ -11,9 +11,9 @@ class MoveRepository @Inject constructor(private val api: ApiService) {
         Log.d("debug", "test")
     }
 
-    suspend fun sendMoveAxisX(x: Int) {
-        Log.d("debug", "sendMoveAxisX($x)")
-        return api.moveAxisX(x)
+    suspend fun sendNewMove(msg: String) {
+        Log.d("debug", "sendNewMove($msg)")
+        return api.newMove(msg)
     }
 
 }

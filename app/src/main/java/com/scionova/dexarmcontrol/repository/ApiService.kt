@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @POST("/move/x/{value}")
-    suspend fun moveAxisX(@Path("value") x: Int)
+    @POST("{msg}")
+    suspend fun newMove(@Path("msg") msg: String)
 
 }

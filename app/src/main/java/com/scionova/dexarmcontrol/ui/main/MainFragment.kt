@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
         // TODO: Use the ViewModel
 
 
-        viewModel.setupSquareArrows(binding.btnArrowUp, binding.btnArrowRight, binding.btnArrowDown, binding.btnArrowLeft, binding.btnArrowMiddle)
+        viewModel.setupSquareArrows(binding.btnArrowForward, binding.btnArrowRight, binding.btnArrowBackward, binding.btnArrowLeft, binding.btnArrowMiddle)
         viewModel.setupVerticalArrowsRight(binding.btnArrowUpVerticalRight, binding.btnArrowDownVerticalRight, binding.btnArrowMiddleVerticalRight)
         viewModel.setupVerticalArrowsLeft(binding.btnArrowUpVerticalLeft, binding.btnArrowDownVerticalLeft, binding.btnArrowMiddleVerticalLeft)
 
