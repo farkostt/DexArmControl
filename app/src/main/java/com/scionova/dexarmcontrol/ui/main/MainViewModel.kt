@@ -1,25 +1,28 @@
 package com.scionova.dexarmcontrol.ui.main
 
 import android.annotation.SuppressLint
-import android.app.Application
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.MotionEvent
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.scionova.dexarmcontrol.R
-import com.scionova.dexarmcontrol.repository.Move
-import com.scionova.dexarmcontrol.repository.MoveRepository
+import com.scionova.dexarmcontrol.repository.OkHttpRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import okio.IOException
+import org.json.JSONException
+import org.json.JSONObject
 import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(private val moveRepository: MoveRepository) : ViewModel(){
+
+class MainViewModel : ViewModel(){
+
+    private val client = OkHttpClient()
+    private val request = OkHttpRequest(client)
+
 
     fun setupSquareArrows(
         btnArrowForward: ImageView,
@@ -62,16 +65,24 @@ class MainViewModel @Inject constructor(private val moveRepository: MoveReposito
                 MotionEvent.ACTION_DOWN -> {
                     Log.d("Controls", msgPressed)
                     viewModelScope.launch {
-                        try {
-                            // Calling the repository is safe as it will move execution off
-                            // the main thread
-                            Log.d("viewModelScope", "sending http...")
-                            val response = moveRepository.sendNewMove(msgPressed)
-                            Log.d("debug", response.toString())
-                        } catch (error: Exception) {
-                            // show error message to user
-                        }
+                        val url = "https://10.0.2.2:50505"
+                        request.POST(url, msgPressed, object: Callback {
 
+                            override fun onFailure(call: Call, e: java.io.IOException) {
+                                Log.d("OkHttpRequest POST", "failed: $e")
+                            }
+
+                            override fun onResponse(call: Call, response: Response) {
+                                val responseData = response.body?.string()
+                                try {
+                                    var json = JSONObject(responseData)
+                                    println("Request Successful!!")
+                                    this@MainViewModel.fetchComplete()
+                                } catch (e: JSONException) {
+                                    e.printStackTrace()
+                                }
+                            }
+                        })
                     }
                 }
                 MotionEvent.ACTION_UP -> {
@@ -81,6 +92,10 @@ class MainViewModel @Inject constructor(private val moveRepository: MoveReposito
 
             true
         }
+    }
+
+    private fun fetchComplete() {
+        Log.d("MainViewModel", "fetch complete")
     }
 
     @SuppressLint("ClickableViewAccessibility")

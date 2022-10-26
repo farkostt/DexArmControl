@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.scionova.dexarmcontrol.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     companion object {
