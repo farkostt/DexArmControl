@@ -66,6 +66,26 @@ class MainViewModel : ViewModel(){
                     Log.d("Controls", msgPressed)
                     viewModelScope.launch {
                         val url = "https://10.0.2.2:50505"
+/*
+                        request.STREAM(url, object: Callback {
+
+                            override fun onFailure(call: Call, e: java.io.IOException) {
+                                Log.d("OkHttpRequest STREAM", "failed: $e")
+                            }
+
+                            override fun onResponse(call: Call, response: Response) {
+                                val responseData = response.body?.string()
+                                try {
+                                    var json = JSONObject(responseData)
+                                    println("Request Successful!!")
+                                    this@MainViewModel.fetchComplete()
+                                } catch (e: JSONException) {
+                                    e.printStackTrace()
+                                }
+                            }
+                        })*/
+
+
                         request.POST(url, msgPressed, object: Callback {
 
                             override fun onFailure(call: Call, e: java.io.IOException) {
@@ -83,6 +103,7 @@ class MainViewModel : ViewModel(){
                                 }
                             }
                         })
+
                     }
                 }
                 MotionEvent.ACTION_UP -> {
