@@ -30,7 +30,7 @@ class OkHttpRequest(client: OkHttpClient) {
 
     fun POST(url: String, parameter: String, callback: Callback): Call {
         val formBody = FormBody.Builder()
-            .add("message", parameter)
+            .add("command", parameter)
             .build()
 
         val request = Request.Builder()

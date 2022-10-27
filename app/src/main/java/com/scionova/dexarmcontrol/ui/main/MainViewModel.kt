@@ -62,29 +62,31 @@ class MainViewModel : ViewModel(){
     private fun setupNewTouchListener(button: ImageView, msgPressed: String, msgReleased: String){
         button.setOnTouchListener { view, motionEvent ->
             when (motionEvent.action){
-                MotionEvent.ACTION_DOWN -> {
-                    Log.d("Controls", msgPressed)
+                MotionEvent.ACTION_UP -> {
+                    // On release off button, send stop request.
                     viewModelScope.launch {
-                        val url = "https://10.0.2.2:50505"
-/*
-                        request.STREAM(url, object: Callback {
-
+                        val url = "http://10.0.2.2:50505"
+                        request.POST(url, "stop", object: Callback {
                             override fun onFailure(call: Call, e: java.io.IOException) {
-                                Log.d("OkHttpRequest STREAM", "failed: $e")
+                                Log.d("Failed to send stop", "failed: $e")
                             }
 
                             override fun onResponse(call: Call, response: Response) {
                                 val responseData = response.body?.string()
                                 try {
                                     var json = JSONObject(responseData)
-                                    println("Request Successful!!")
                                     this@MainViewModel.fetchComplete()
                                 } catch (e: JSONException) {
                                     e.printStackTrace()
                                 }
                             }
-                        })*/
-
+                        })
+                    }
+                }
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("Controls", msgPressed)
+                    viewModelScope.launch {
+                        val url = "http://10.0.2.2:50505"
 
                         request.POST(url, msgPressed, object: Callback {
 
@@ -105,9 +107,6 @@ class MainViewModel : ViewModel(){
                         })
 
                     }
-                }
-                MotionEvent.ACTION_UP -> {
-                    Log.d("Controls", msgReleased)
                 }
             }
 
