@@ -5,7 +5,6 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scionova.dexarmcontrol.databinding.FragmentMainBinding
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainFragment : Fragment() {
 

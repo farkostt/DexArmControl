@@ -7,15 +7,10 @@ import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.scionova.dexarmcontrol.repository.OkHttpRequest
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
-import okio.IOException
 import org.json.JSONException
 import org.json.JSONObject
-import javax.inject.Inject
 
 
 class MainViewModel : ViewModel(){
